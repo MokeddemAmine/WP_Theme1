@@ -23,6 +23,31 @@ ul{
 .post-content{
     height:75px;
 }
+.post-pagination a,
+.post-pagination span{
+    display:inline-block;
+    background-color: #fff;
+    color:#111;
+    padding:.5rem 1rem;
+    border-radius:.5rem;
+    font-weight: bold;
+    width:100px;
+    text-align: center;
+}
+.post-pagination a{
+    color:#ffc107;
+    transition: .3s;
+}
+.post-pagination a:hover{
+    background-color:#ffc107 ;
+    color:white;
+}
+.post-pagination span{
+    cursor:not-allowed;
+    /* pointer-events: none; */
+    background-color: #ccc;
+    color: #666;
+}
 /* end home page */
 /* start footer */
 footer{

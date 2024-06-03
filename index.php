@@ -49,6 +49,21 @@
                     }
                 }
             ?>
+            <div class="post-pagination d-flex justify-content-center gap-2">
+                <?php 
+                    if(get_previous_posts_link()){
+                        previous_posts_link('<i class="fa-solid fa-chevron-left"></i> Prev');
+                    }else{
+                        echo '<span>Prev</span>';
+                    }
+
+                    if(get_next_posts_link()){
+                        next_posts_link('Next <i class="fa-solid fa-chevron-right"></i>');
+                    }else{
+                        echo '<span>Next</span>';
+                    }
+                ?>
+            </div>
         </div>
     </div>
 <?php get_footer(); ?>
