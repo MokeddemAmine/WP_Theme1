@@ -54,3 +54,16 @@
             'walker'                => new WP_Bootstrap_Navwalker(),
         ));
     }
+
+    // add post thumbnail feature to posts
+    add_theme_support('post-thumbnails');
+
+    // add the excerpt attributes
+    function mine_excerpt_length ($length){
+        return 20;
+    }
+    function mine_excerpt_more ($more){
+        return 'Read More ...';
+    }
+    add_filter('excerpt_length','mine_excerpt_length');
+    add_filter('excerpt_more','mine_excerpt_more');
