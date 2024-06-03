@@ -1,8 +1,8 @@
 <?php
     if(comments_open()){
-        echo '<h3 class="my-3 bg-light p-2 rounded">';
-            comments_number();
-        echo '</h3>';
+        // echo '<h3 class="my-3 bg-light p-2 rounded">';
+        //     comments_number();
+        // echo '</h3>';
         // add new comment or reply to a comment
         $args_form = array(
             'title_reply'   =>'Comment Here',

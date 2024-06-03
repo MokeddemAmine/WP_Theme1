@@ -37,6 +37,10 @@ ul{
     width:100px;
     text-align: center;
 }
+.one-post-pagination a,
+.one-post-pagination span{
+    width:auto;
+}
 .post-pagination a{
     color:#ffc107;
     transition: .3s;
