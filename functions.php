@@ -60,7 +60,11 @@
 
     // add the excerpt attributes
     function mine_excerpt_length ($length){
-        return 20;
+        if(is_author()){
+            return 20;
+        }else{
+            return 25;
+        }
     }
     function mine_excerpt_more ($more){
         return 'Read More ...';

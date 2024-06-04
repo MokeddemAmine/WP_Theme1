@@ -8,6 +8,14 @@ ul{
 .mb-6{
     margin-bottom:5rem !important;
 }
+.h-200{
+    height:200px;
+    object-fit: contain;
+}
+.w-200{
+    width:200px;
+    object-fit: contain;
+}
 /* end general style */
 /* start header */
 #menu-bootstrap-menu{
