@@ -10,9 +10,21 @@
     </title>
 
     <?php wp_head(); ?>
+    <style type="text/css">
+        /* Primary Color */
+        body {
+            background-color: <?php echo get_theme_mod( 'body_color', '#adb5bd' ); ?>;
+        }
+        nav{
+            background-color: <?php echo get_theme_mod( 'navbar_color', '#ffc107' ); ?>;
+        }
+        .main-post{
+            background-color: <?php echo get_theme_mod( 'posts_color', '#ffffff' ); ?>;
+        }
+    </style>
 </head>
-<body class="bg-secondary">
-    <nav class="navbar navbar-expand-lg bg-warning text-primary">
+<body>
+    <nav class="navbar navbar-expand-lg text-primary">
         <div class="container">
             <a class="navbar-brand" href="<?php bloginfo('url') ?>"><?php bloginfo('name') ?></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

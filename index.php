@@ -7,7 +7,7 @@
                         the_post();
                     ?>
                     <div class="col-lg-6 col-xxl-4">
-                        <div class="main-post bg-white p-3 rounded mb-3">
+                        <div class="main-post p-3 rounded mb-3">
                             <h3 class="post-title m-0 mb-2 text-secondary">
                                 <a href="<?php the_permalink() ?>" reel="bookmark" title="Link to <?php the_title_attribute() ?>" class="text-capitalize">
                                     <?php the_title() ?>

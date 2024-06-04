@@ -39,7 +39,7 @@
                             <div class="post-single-image">
                                 <?php the_post_thumbnail('',['class' => 'img-responsive img-thumbnail']) ?>
                             </div>
-                            <div class="post-content my-2 text-dark">
+                            <div class="post-single-content my-2 text-dark">
                                 <?php the_content(); ?>
                             </div>
                             <div class="post-categories">

@@ -67,3 +67,49 @@
     }
     add_filter('excerpt_length','mine_excerpt_length');
     add_filter('excerpt_more','mine_excerpt_more');
+
+    // add colors options to customize the theme
+
+    function my_theme_customizer_assets() {
+        wp_enqueue_script( 'wp-color-picker' );
+        wp_enqueue_style( 'wp-color-picker' );
+    }
+
+    add_action( 'customize_controls_enqueue_scripts', 'my_theme_customizer_assets' );
+
+    function my_theme_customize_register( $wp_customize ) {
+        // Add color for body
+        $wp_customize->add_setting( 'body_color', array(
+            'default' => '#adb5bd', // Default color
+            'sanitize_callback' => 'sanitize_hex_color', // Sanitization callback
+        ) );
+    
+        // Add color control body
+        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'body_color', array(
+            'label' => __( 'Body Color', 'myTheme' ),
+            'section' => 'colors',
+        ) ) );
+        // add color for navbar
+        $wp_customize->add_setting( 'navbar_color', array(
+            'default' => '#ffc107', // Default color
+            'sanitize_callback' => 'sanitize_hex_color', // Sanitization callback
+        ) );
+    
+        // Add color control for navbar
+        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'navbar_color', array(
+            'label' => __( 'Nav Color', 'myTheme' ),
+            'section' => 'colors',
+        ) ) );
+        // add color for posts
+        $wp_customize->add_setting( 'posts_color', array(
+            'default' => '#ffffff', // Default color
+            'sanitize_callback' => 'sanitize_hex_color', // Sanitization callback
+        ) );
+    
+        // Add color control for posts
+        $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'posts_color', array(
+            'label' => __( 'Posts Color', 'myTheme' ),
+            'section' => 'colors',
+        ) ) );
+    }
+    add_action( 'customize_register', 'my_theme_customize_register' );
