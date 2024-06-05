@@ -1,4 +1,5 @@
 <?php get_header() ?>
+    <?php include(get_template_directory().'/includes/breadcrumb.php'); ?>
     <div class="container my-4 mb-6">
             <?php 
                 if(have_posts()){
