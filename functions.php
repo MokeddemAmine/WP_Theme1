@@ -135,3 +135,24 @@
         ) ) );
     }
     add_action( 'customize_register', 'my_theme_customize_register' );
+
+    // set a number of posts per page in category page
+    function custom_posts_per_page( $query ) {
+        if ( !is_admin() && $query->is_main_query() && is_category() ) {
+            $query->set( 'posts_per_page', 2 ); // Change 10 to the number of posts you want per page
+        }
+    }
+    add_action( 'pre_get_posts', 'custom_posts_per_page' );
+
+    // add sidebar
+    function mine_register_sidebar(){
+        register_sidebar(array(
+            'name'          => 'main-sidebar',
+            'id'            => 'main-sidebar',
+            'description'   => 'main sidebar',
+            'class'         => 'main-sidebar',
+            'before_sidebar'=> '<div class="widgets-sidebar list-unstyled">',
+            'after_sidebar' => '</div>'
+        ));
+    }
+    add_action('widgets_init','mine_register_sidebar');
