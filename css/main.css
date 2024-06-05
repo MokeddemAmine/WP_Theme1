@@ -73,17 +73,21 @@ ul{
     display:flex;
     align-items: center;
     justify-content: center;
-    border-left:1px dashed #0d6efd;
+    border-left:1px dashed #ffc107;
     transition:.2s;
+}
+.post-pagination-wp a{
+    color:#ffc107;
+    font-weight: bold;
 }
 .post-pagination-wp span:first-child,
 .post-pagination-wp a:first-child{
     border-left:none;
 }
 .post-pagination-wp a:hover{
-    background-color: #0d6efd;
+    background-color: #ffc107;
     color:white;
-    border:1px solid #0d6efd;
+    border:1px solid #ffc107;
 }
 .bypostauthor .fn{
     position:relative;
