@@ -76,9 +76,10 @@
         <div class="col-lg-3 pl-1">
             <div class="bg-white h-100 p-1 rounded">
                 <?php 
-                    if(is_active_sidebar('main-sidebar')){
-                        dynamic_sidebar('main-sidebar');
-                    }
+                    // if(is_active_sidebar('main-sidebar')){
+                    //     dynamic_sidebar('main-sidebar');
+                    // }
+                    get_sidebar('mysql');
                 ?>
             </div>
         </div>
