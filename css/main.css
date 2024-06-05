@@ -63,6 +63,43 @@ ul{
     background-color: #ccc;
     color: #666;
 }
+
+.post-pagination-wp a,
+.post-pagination-wp span{
+    padding:.5rem;
+    width:50px;
+    height:50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-left:1px dashed #0d6efd;
+    transition:.2s;
+}
+.post-pagination-wp span:first-child,
+.post-pagination-wp a:first-child{
+    border-left:none;
+}
+.post-pagination-wp a:hover{
+    background-color: #0d6efd;
+    color:white;
+    border:1px solid #0d6efd;
+}
+.bypostauthor .fn{
+    position:relative;
+}
+.bypostauthor .fn::after{
+    content:'\f00c';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size:.7rem;
+    background-color: #0d6efd;
+    color:white;
+    position:absolute;
+    right:-1.5rem;
+    top:.2rem;
+    border-radius:50%;
+    padding:0 .2rem;
+}
 /* end home page */
 /* start comments */
 #reply-title{
@@ -128,6 +165,13 @@ ul{
     display: none;
 }
 /* end comments */
+/* start 404 page */
+.page-404 *{
+    max-width:100%;
+    width:800px;
+    margin:auto;
+}
+/* end 404 page */
 /* start footer */
 footer{
     position:fixed;

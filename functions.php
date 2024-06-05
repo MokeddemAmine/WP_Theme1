@@ -71,6 +71,24 @@
     }
     add_filter('excerpt_length','mine_excerpt_length');
     add_filter('excerpt_more','mine_excerpt_more');
+    // paginate the index page
+    function numbering_pagination(){
+        global $wp_query;
+        $all_pages = $wp_query->max_num_pages;
+        $current_pages = max(1,get_query_var('paged'));
+
+        if($all_pages > 1){
+            return paginate_links(array(
+                'base'          => get_pagenum_link().'%_%',
+                'format'        => 'page/%#%',
+                'current'       => $current_pages,
+                'prev_text'     => 'Prev',
+                'next_text'     => 'Next',
+                'mid_size'      => 2,
+                'end_size'      => 3,
+            ));
+        }
+    }
 
     // add colors options to customize the theme
 
