@@ -1,8 +1,4 @@
-<?php get_header() ?>
-
-    <div class="container my-4">
-        <div class="row">
-            <?php 
+<?php 
                 if(have_posts()){
                     while(have_posts()){
                         the_post();
@@ -51,14 +47,27 @@
                         </div>
                     </div>
                     <?php
-                    }
-                }
+                    }?>
+
+                    <div class="post-pagination post-pagination-search my-2 d-flex justify-content-center gap-2">
+                        <?php 
+                            if(get_previous_posts_link()){
+                                previous_posts_link('<i class="fa-solid fa-chevron-left"></i> Prev');
+                            }else{
+                                echo '<span>Prev</span>';
+                            }
+
+                            if(get_next_posts_link()){
+                                next_posts_link('Next <i class="fa-solid fa-chevron-right"></i>');
+                            }else{
+                                echo '<span>Next</span>';
+                            }
+                        ?>
+                    </div>
+               <?php }else{
+                 echo '<div class="alert alert-light my-3">
+                            There are no results for your search query';
+                            echo get_search_query();
+                 echo '</div>';
+               }
             ?>
-            <div class="post-pagination-wp d-flex justify-content-center">
-                <div class="d-flex rounded bg-white border border-warning">
-                    <?php echo numbering_pagination(); ?>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php get_footer(); ?>

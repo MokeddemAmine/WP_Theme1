@@ -89,6 +89,16 @@ ul{
     color:white;
     border:1px solid #ffc107;
 }
+.post-pagination-search a{
+    background-color: #ffc107;
+    color:white;
+    border: 1px solid transparent;
+}
+.post-pagination-search a:hover{
+    background-color: white;
+    color:#ffc107;
+    border:1px solid #ffc107
+}
 .bypostauthor .fn{
     position:relative;
 }
