@@ -156,3 +156,48 @@
         ));
     }
     add_action('widgets_init','mine_register_sidebar');
+
+    // add custom post : cars
+    function cars_post(){
+        $labels = array(
+            'name'          => _x('Cars','post type general name'),
+            'singular_name' => _x('Car','post type singular name'),
+            'add_new'      => _x('Add New Car','car'),
+            'add_new_item'  => __('Add New Car','Type'),
+            'edit_item'     => __('Edit Car Type'),
+            'new_item'      => __('New Car Type'),
+            'all_items'     => __('New Car Type'),
+            'view_item'     => __('View Car Type'),
+            'search_items'  => __('Search Car Type'),
+            'not_fount'     => __('No Car Type found'),
+            'menu_name'     => 'Cars'
+        );
+        $args_cars_post = array(
+            'labels'        => $labels,
+            'hierarchical'  => true,
+            'public'        => true,
+            'has_archive'   => true,
+            'menu_icon'     => 'dashicons-car',
+            'supports'      => array('title','editor','thumbnail','custom-fields'),
+        );
+        register_post_type('cars',$args_cars_post);
+    }
+
+    add_action('init','cars_post');
+
+    // add brand taxonomy 
+    function brand_taxonomy(){
+        $labels2 = array(
+            'name'          => 'Brands',
+            'singular_name' => 'Brand',
+        );
+        $args_taxonomy = array(
+            'labels'        => $labels2,
+            'public'        => true,
+            'hierarchical'  => true,
+        );
+
+        register_taxonomy('brands',array('cars'),$args_taxonomy);
+    }
+
+    add_action('init','brand_taxonomy');
