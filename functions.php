@@ -1,6 +1,15 @@
 <?php
 
     // include navwalker to fix bootstrap menu
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
+
+    require_once('vendor/autoload.php');
+
+    //Load Composer's autoloader
+
+
     require_once('wp-bootstrap-navwalker.php');
 
     // add style files
@@ -201,3 +210,67 @@
     }
 
     add_action('init','brand_taxonomy');
+
+    // enquiry form
+    function car_form(){
+        // verify the nonce
+        if(!wp_verify_nonce($_POST['nonce'],'ajax-nonce')){
+            wp_send_json_error('Nonce is incorrect',401);
+            die();
+        }
+
+        $formdata = [];
+        wp_parse_str($_POST['enquiry'],$formdata);
+
+        $admin_email    = get_option('admin_email');
+        $subject        = 'Enquiry from : '.$formdata['fname'];
+
+        $message = '';
+        foreach($formdata as $index=>$field){
+            $message .= '<strong>'.$index.':</strong> '.$field.'<br/>';
+        }
+        // using phpmailer included in WP
+
+        $mail = new PHPMailer();
+        
+            $mail->isSMTP();
+            $mail->Host     = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'mokeddemamine1707@gmail.com';
+            $mail->Password = 'wazu tlsz thus gnir';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 465;
+
+            $mail->SetFrom($formdata['email'],$formdata['fname']);
+            $mail->addAddress($admin_email,'Mr. Admin');
+
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body = $message;
+
+            if($mail->send()){
+                wp_send_json_success('Email send');
+            }else{
+                wp_send_json_error('email failed');
+            }
+            
+
+    }
+    
+    add_action('wp_ajax_enquiry','car_form');
+    add_action('wp_ajax_nopriv_enquiry','car_form');
+
+    // phpMailer installed in WP
+    // function custom_mailer(PHPMailer $mail){
+    //     global $formdata;
+    //     $mail->SetFrom('mokeddemamine1707@gmail.com','mokeddem amine');
+    //     $mail->Host     = 'smtp.gmail.com';
+    //     $mail->Port     = 587;
+    //     $mail->SMTPAuth = true;
+    //     $mail->SMTPSecure = 'tls';
+    //     $mail->Username = 'mokeddemamine1707@gmail.com';
+    //     $mail->Password = 'srgq qtqx qtar zuhw';
+    //     $mail->isSMTP();
+    // }
+
+    // add_action('phpmailer_init','custom_mailer');

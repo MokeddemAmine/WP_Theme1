@@ -77,7 +77,9 @@
                                 }
                             ?>
                         </div>
-                        
+                        <div class="bg-white p-3 rounded my-3">
+                            <?php get_template_part('includes/form','enquiry'); ?>
+                        </div>
                     <?php
                     }
                     wp_reset_postdata();
