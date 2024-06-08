@@ -72,7 +72,7 @@
         if(is_author()){
             return 20;
         }else{
-            return 25;
+            return 10;
         }
     }
     function mine_excerpt_more ($more){
@@ -274,3 +274,47 @@
     // }
 
     // add_action('phpmailer_init','custom_mailer');
+
+
+    // search car in cars posts
+
+    function search_query(){
+        $args = [
+            'post_type'         => 'cars',
+            'post_per_page'     => 0,
+            'tax_query'         => [],
+            'meta_qeury'        => ['relation'=> 'And'],
+        ];
+
+        if(isset($_GET['keyword']) && !empty($_GET['keyword'])){
+            $args['s'] = sanitize_text_field($_GET['keyword']);
+        }
+
+        if(isset($_GET['brand']) && !empty($_GET['brand'])){
+            $args['tax_query'][] = [
+                'taxonomy'      => 'brands',
+                'field'         => 'slug',
+                'terms'         => array(sanitize_text_field($_GET['brand'])),
+            ]; 
+        }
+
+        if(isset($_GET['price_above']) && !empty($_GET['price_above'])){
+            $args['meta_query'][] = array(
+                'key'           => 'price',
+                'value'         => sanitize_text_field($_GET['price_above']),
+                'compare'       => '>=',
+                'type'          => 'numeric',
+            );
+        }
+
+        if(isset($_GET['price_below']) && !empty($_GET['price_below'])){
+            $args['meta_query'][] = array(
+                'key'           => 'price',
+                'value'         => sanitize_text_field($_GET['price_below']),
+                'compare'       => '<=',
+                'type'          => 'numeric',
+            );
+        }
+
+        return new WP_Query($args);
+    }
